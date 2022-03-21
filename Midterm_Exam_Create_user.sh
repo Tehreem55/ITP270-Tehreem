@@ -8,8 +8,6 @@ sudo useradd -m $u
 echo "$u:Password1" | sudo chpasswd
 done
 
-sudo tail -n2 /etc/passwd
-
 #Taking 2 inputs username and password
 
 read -p "Enter the username: " USERNAME
@@ -17,9 +15,9 @@ read -p "Enter the account password: " PASSWORD
 
 #Validate the password at least 8 characters long using a while loop and if-else condition
 echo
-echo "No user will be created unless the password is 8 characters long" 
+echo "Password has to be at least 8 characters long otherwise try again" 
 while read line;
-read -p "Enter the username to create: " USERNAME
+read -p "Enter the username to be created: " USERNAME
 read -p "Enter the password to use for the account: " PASSWORD
 Count="${#PASSWORD}"
 do
@@ -43,4 +41,7 @@ read -p "Enter password: : PASSWORD
 echo $PASSWORD 
 
 sudoadd useradd $USERNAME12
+
 sudo usermod -p ${PASSWORD} ${USERNAME12}
+
+cat /etc/passwd
